@@ -1,8 +1,14 @@
 import React, { Component } from "react";
+import styled from "styled-components";
+import { getAlbumDetail } from "../api";
+
+const Container = styled.div`
+  margin-top: 55px;
+`;
 
 class AlbumDetail extends Component {
-  constructor (){
-    super();
+  constructor (props){
+    super(props);
     this.state = {
       coverImgUrl: "아직없음 - fake",
       albumTitle: "Purpose - The 2nd Album - fake",
@@ -12,6 +18,11 @@ class AlbumDetail extends Component {
       planingCompany: "fake - Company"
     }
   }
+  async componentDidMount () {
+    const { props: {id} } = this;
+    const { data: albumDetail} = await getAlbumDetail(id);
+    console.log(albumDetail);
+  }
   render(props) {
     const { coverImgUrl,
             albumTitle,
@@ -20,7 +31,7 @@ class AlbumDetail extends Component {
             genre,
             planingCompany } = this.state;
     return (
-      <div>
+      <Container>
         <div>
           커버사진 : {coverImgUrl}
         </div>
@@ -39,7 +50,7 @@ class AlbumDetail extends Component {
         <div>
           기획사 : {planingCompany}
         </div>
-      </div>
+      </Container>
     )
   }
 }

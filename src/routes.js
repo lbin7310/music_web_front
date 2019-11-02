@@ -9,9 +9,7 @@ export default () => {
       <Route exact path="/">
         <Home />
       </Route>
-      <Route path="/album/:id">
-        <AlbumDetail />
-      </Route>
+      <Route path="/album/:id" render={props => <AlbumDetail id={props.match.params.id} />}/>
     </ Switch>
   )
 };
