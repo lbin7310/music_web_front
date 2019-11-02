@@ -9,7 +9,7 @@ export default () => {
       <Route exact path="/">
         <Home />
       </Route>
-      <Route pat="/album/:id">
+      <Route path="/album/:id">
         <AlbumDetail />
       </Route>
     </ Switch>

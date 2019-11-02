@@ -12,7 +12,7 @@ class AlbumDetail extends Component {
       planingCompany: "fake - Company"
     }
   }
-  render() {
+  render(props) {
     const { coverImgUrl,
             albumTitle,
             saleDate,

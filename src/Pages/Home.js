@@ -1,30 +1,39 @@
 import React, { Component } from "react";
-import { getAlbums, getAlbumDetail } from "../api";
+import { getAlbums } from "../api";
+import styled from "styled-components";
+import Album from "../components/Album";
+
+const Container = styled.div`
+  margin-top: 55px;
+  display: flex;
+  flex-wrap: wrap;
+`;
 
 class Home extends Component {
   constructor () {
     super();
     this.state = {
-      something: "Hello"
+      albums: []
     }
   }
 
   async componentDidMount() {
-    const { data } = await getAlbums();
-    console.log(data);
-    const { data: AlbumDetail } = await getAlbumDetail(2);
-    console.log(AlbumDetail, "albumDetail")
+    const { data: albums } = await getAlbums();
     this.setState({
-      something: "Testing"
+      albums
     })
   }
 
   render() {
-    const { something } = this.state; 
+    const { state: { albums } } = this;
     return (
-      <div>
-        {something}
-      </div>
+      <Container>
+        {
+          albums.map( album => {
+            return <Album album={album} key={album.albumId}/>
+          })
+        }
+      </Container>
     )
   }
 }
