@@ -21,11 +21,11 @@ const PauseButton = styled.button`
 
 
 
-export default () => {
+export default (props) => {
   const { song, 
           onPlay, 
           onPause, 
-          id, trackNum, pauseToggle } = this.props;
+          id, trackNum, pauseToggle } = props;
   return (
      <Container>
         <Number>{id + 1}</Number>
