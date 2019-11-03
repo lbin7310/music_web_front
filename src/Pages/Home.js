@@ -4,7 +4,6 @@ import styled from "styled-components";
 import Album from "../components/Album";
 
 const Container = styled.div`
-  margin-top: 55px;
   display: flex;
   flex-wrap: wrap;
 `;
