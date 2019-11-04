@@ -11,7 +11,7 @@ const Header = styled.header`
   left: 0;
   width: 100%;
   height: 55px;
-  background-color: #273c75;
+  background-color: #1B1464;
   z-index: 100;
 `;
 const HomeLink = styled(Link)`

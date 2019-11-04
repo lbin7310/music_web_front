@@ -2,11 +2,32 @@ import React, {Component} from "react";
 import styled from "styled-components";
 import TrackList from "./TrackList";
 
-const AlbumInfoContainer = styled.div``
+const AlbumInfoContainer = styled.div``;
 
 const Audio = styled.audio``;
-
 const AudioSource = styled.source``;
+
+const CoverContainer = styled.div`
+`;
+const AlbumCover = styled.img`
+  width: 100%;
+`;
+const AlbumContents = styled.div`
+  margin-top: 5%;
+  padding-left: 5%;
+  padding-right: 5%;
+  margin-bottom: 5%;
+`;
+const Content = styled.div`
+  width: 80%;
+  padding-bottom: 5px ;
+`;
+const Subject = styled.div`
+  font-size: 24px;
+`;
+const Tracks = styled.div`
+  margin-top: 20px;
+`;
 
 class AlbumInfo extends Component {
   constructor() {
@@ -47,41 +68,46 @@ class AlbumInfo extends Component {
             handleAudioPlay } = this; 
   return (
     <AlbumInfoContainer>
-      <div>
-        커버사진 : {albumDetail.coverImgUrl}
-      </div>
-      <div>
-        앨범명 : {albumDetail.title} 
-      </div>
-      <div>
-        발매일 : {albumDetail.saleDate}
-      </div>
-      <div>
-        아티스트 : {albumDetail.artist}
-      </div>
-      <div>
-        장르 : {albumDetail.genre}
-      </div>
-      <div>
-        기획사 : {albumDetail.planingCompany}
-      </div>
-      { albumDetail.songs ? 
-        albumDetail.songs.map( (song, idx) => { 
-          return <TrackList 
-                    song={song} 
-                    key={song.id} 
-                    id={idx} 
-                    refs={refs}
-                    trackNum={trackNum}
-                    pauseToggle={pauseToggle}
-                    onPlay={handleAudioPlay}
-                    onPause={handleAudioPause}
-                  />
-        }) 
-        : "" }
-        <Audio ref={testAudio} onEndedCapture={handleAudioPause}>
-          <AudioSource src={audioSrc}/> 
-        </Audio>
+      <CoverContainer>
+        <AlbumCover src={albumDetail.coverImgUrl} />
+      </CoverContainer>
+      <AlbumContents>
+        <Content>
+          앨범명 : {albumDetail.title} 
+        </Content>
+        <Content>
+          발매일 : {albumDetail.saleDate}
+        </Content>
+        <Content>
+          아티스트 : {albumDetail.artist}
+        </Content>
+        <Content>
+          장르 : {albumDetail.genre}
+        </Content>
+        <Content>
+          기획사 : {albumDetail.planingCompany}
+        </Content>
+        <Tracks>
+          <Subject>수록곡</Subject>
+          { albumDetail.songs ? 
+            albumDetail.songs.map( (song, idx) => { 
+              return <TrackList 
+                        song={song} 
+                        key={song.id} 
+                        id={idx} 
+                        refs={refs}
+                        trackNum={trackNum}
+                        pauseToggle={pauseToggle}
+                        onPlay={handleAudioPlay}
+                        onPause={handleAudioPause}
+                      />
+            }) 
+            : "" }
+        </Tracks>
+      </AlbumContents>
+      <Audio ref={testAudio} onEndedCapture={handleAudioPause}>
+        <AudioSource src={audioSrc}/> 
+      </Audio>
     </AlbumInfoContainer>
   )}
 }
