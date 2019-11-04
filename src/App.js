@@ -9,7 +9,6 @@ const Wrapper = styled.div`
 `
 
 function App() {
-  console.log(process.env.NODE_ENV);
   return (
     <Router className="App">
       <Wrapper>
