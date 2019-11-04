@@ -18,7 +18,10 @@ const AlbumFigure = styled.figure`
   width: 150px;
 `;
 
-const AlbumImg = styled.img``;
+const AlbumImg = styled.img`
+  width: 100%;
+  height: 100%;
+`;
 
 const AlbumFigcaption = styled.figcaption``;
 
@@ -27,12 +30,12 @@ const AlbumTitle = styled.div``;
 const Artist = styled.div``;
 
 export default (props) => {
-  const { album: {albumId, title, artist} } = props;
+  const { album: {albumId, title, artist, coverImgUrl} } = props;
   return (
     <Container>
       <AlbumDetailLink to={`/album/${albumId}`}>
         <AlbumFigure>
-          <AlbumImg />
+          <AlbumImg src={coverImgUrl}/>
           <AlbumFigcaption>
             <AlbumTitle>
               {title}
