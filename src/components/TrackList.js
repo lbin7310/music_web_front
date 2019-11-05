@@ -32,15 +32,21 @@ const PauseButton = styled(Pause)`
 
 export default (props) => {
   const { song, 
-          onPlay, 
-          onPause, 
-          id, trackNum, pauseToggle } = props;
+          id, 
+          trackNum, 
+          pauseToggle,
+          onHandlePlayer,
+          onHandlePause,
+          albumId,
+          trackAlbumId
+        } = props;
+
   return (
      <Container>
         <Number>{id + 1}</Number>
         <Song>{song.title}</Song>
-        { trackNum === (id + 1) && !pauseToggle ? <PauseButton onClick={()=>{onPause(song.musicFileUrl)}} /> :
-          <PlayButton onClick={()=>{onPlay(song.musicFileUrl, id + 1)}} />
+        { trackNum === (id + 1) && !pauseToggle && albumId === trackAlbumId ? <PauseButton onClick={()=>{onHandlePause(song.musicFileUrl)}} /> :
+          <PlayButton onClick={()=>{onHandlePlayer(song.musicFileUrl, id + 1, albumId)}} />
         }
      </Container>
    )
