@@ -32,7 +32,8 @@ const Tracks = styled.div`
 const BackLink = styled(Link)`
   position: fixed;
   top: 15px;
-  right: 10px;
+  right: 0;
+  margin-right: 3%;
   z-index: 100;
   color: white;
 `;
