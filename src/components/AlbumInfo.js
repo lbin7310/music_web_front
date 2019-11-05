@@ -1,22 +1,22 @@
 import React, {Component} from "react";
 import styled from "styled-components";
 import TrackList from "./TrackList";
+import { ArrowBackIos } from "styled-icons/material/ArrowBackIos";
+import { Link } from "react-router-dom";
 
 const AlbumInfoContainer = styled.div``;
 
 const Audio = styled.audio``;
+
 const AudioSource = styled.source``;
 
-const CoverContainer = styled.div`
-`;
+const CoverContainer = styled.div``;
+
 const AlbumCover = styled.img`
   width: 100%;
 `;
 const AlbumContents = styled.div`
-  margin-top: 5%;
-  padding-left: 5%;
-  padding-right: 5%;
-  margin-bottom: 5%;
+  padding: 5%;
 `;
 const Content = styled.div`
   width: 80%;
@@ -27,6 +27,18 @@ const Subject = styled.div`
 `;
 const Tracks = styled.div`
   margin-top: 20px;
+`;
+
+const BackLink = styled(Link)`
+  position: fixed;
+  top: 15px;
+  right: 10px;
+  z-index: 100;
+  color: white;
+`;
+
+const BackButton = styled(ArrowBackIos)`
+  height: 25px; 
 `;
 
 class AlbumInfo extends Component {
@@ -104,6 +116,9 @@ class AlbumInfo extends Component {
             }) 
             : "" }
         </Tracks>
+        <BackLink to="/">
+          <BackButton />  
+        </BackLink>
       </AlbumContents>
       <Audio ref={testAudio} onEndedCapture={handleAudioPause}>
         <AudioSource src={audioSrc}/> 

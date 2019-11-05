@@ -15,7 +15,7 @@ const AlbumDetailLink = styled(Link)`
 const AlbumFigure = styled.figure`
   padding: 0;
   margin: 0;
-  border: 1px solid black;
+  border: 1px solid #3B3B98;
   width: 150px;
   border-radius: 2px;
 `;
@@ -33,10 +33,12 @@ const AlbumFigcaption = styled.figcaption`
   justify-content: space-between;
 `;
 
-const AlbumTitle = styled.div``;
+const AlbumTitle = styled.div`
+  font-size: 15px;
+`;
 
 const Artist = styled.div`
-  font-size: 15px;
+  font-size: 13px;
   color: #808e9b;
 `;
 
@@ -46,7 +48,7 @@ export default (props) => {
     <Container>
       <AlbumDetailLink to={`/album/${albumId}`}>
         <AlbumFigure>
-          <AlbumImg src={coverImgUrl}/>
+          <AlbumImg src={coverImgUrl} alt={`앨범 ${title} 아티스트 ${artist}`}/>
           <AlbumFigcaption>
             <AlbumTitle>
               {title}
