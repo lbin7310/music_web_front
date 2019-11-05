@@ -1,14 +1,10 @@
-import React, {Component} from "react";
+import React from "react";
 import styled from "styled-components";
 import TrackList from "./TrackList";
 import { ArrowBackIos } from "styled-icons/material/ArrowBackIos";
 import { Link } from "react-router-dom";
 
 const AlbumInfoContainer = styled.div``;
-
-const Audio = styled.audio``;
-
-const AudioSource = styled.source``;
 
 const CoverContainer = styled.div``;
 
@@ -42,43 +38,15 @@ const BackButton = styled(ArrowBackIos)`
   height: 25px; 
 `;
 
-class AlbumInfo extends Component {
-  constructor() {
-    super()
-    this.state={
-      audioSrc:"",
-      trackNum: 0,
-      pauseToggle: false
-    };
-    this.testAudio = React.createRef();
-  }
-
-  handleAudioPlay = (audioSrc, trackNum) => {
-    this.setState({
-      audioSrc,
-      trackNum,
-      pauseToggle: false
-    },function(){
-      this.testAudio.current.pause();
-      this.testAudio.current.load();
-      this.testAudio.current.play();
-    })
-  }
-
-  handleAudioPause = () => {
-    this.testAudio.current.pause();
-    this.setState({
-      pauseToggle: true
-    })
-  }
-  
-  render() {
-    const { props: {albumDetail},
-            state: {audioSrc, trackNum, pauseToggle},
-            refs } = this;
-    const { testAudio,
-            handleAudioPause,
-            handleAudioPlay } = this; 
+export default props => {
+  const { albumDetail, 
+          onHandlePlayer, 
+          onHandlePause, 
+          trackNum, 
+          pauseToggle,
+          albumId,
+          trackAlbumId
+        } = props;
   return (
     <AlbumInfoContainer>
       <CoverContainer>
@@ -107,12 +75,13 @@ class AlbumInfo extends Component {
               return <TrackList 
                         song={song} 
                         key={song.id} 
-                        id={idx} 
-                        refs={refs}
+                        id={idx}
                         trackNum={trackNum}
                         pauseToggle={pauseToggle}
-                        onPlay={handleAudioPlay}
-                        onPause={handleAudioPause}
+                        onHandlePlayer={onHandlePlayer}
+                        onHandlePause={onHandlePause}
+                        albumId={albumId}
+                        trackAlbumId={trackAlbumId}
                       />
             }) 
             : "" }
@@ -121,11 +90,6 @@ class AlbumInfo extends Component {
           <BackButton />  
         </BackLink>
       </AlbumContents>
-      <Audio ref={testAudio} onEndedCapture={handleAudioPause}>
-        <AudioSource src={audioSrc}/> 
-      </Audio>
     </AlbumInfoContainer>
-  )}
-}
-
-export default AlbumInfo;
+  )
+};

@@ -13,6 +13,7 @@ class AlbumDetail extends Component {
       albumDetail: {}
     }
   }
+  
   async componentDidMount () {
     const { props: {id} } = this;
     const getData = await getAlbumDetail(id);
@@ -21,11 +22,22 @@ class AlbumDetail extends Component {
       albumDetail
     })
   }
+
   render() {
-    const { state: { albumDetail } } = this;
+    const { state: { albumDetail },
+            props: { onHandlePlayer, onHandlePause, trackNum, pauseToggle, id: albumId, trackAlbumId } 
+          } = this;
     return (
       <Container>
-        <AlbumInfo albumDetail={albumDetail}/>
+        <AlbumInfo 
+          albumDetail={albumDetail}
+          onHandlePlayer={onHandlePlayer}
+          onHandlePause={onHandlePause}
+          trackNum={trackNum}
+          albumId={albumId}
+          pauseToggle={pauseToggle}
+          trackAlbumId={trackAlbumId}
+        />
       </Container>
     )
   }
