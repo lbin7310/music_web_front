@@ -8,7 +8,9 @@ import styled from "styled-components";
 
 const Wrapper = styled.div`
   margin-top: 55px;
-  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `
 
 class App extends Component {
@@ -77,6 +79,7 @@ class App extends Component {
             trackAlbumId={trackAlbumId}
           />
         </Wrapper>
+        <Footer />
         <MusicPlayer 
           player={player}
           onHandlePlayer={handlePlay}
@@ -85,7 +88,6 @@ class App extends Component {
           track={track}
           pauseToggle={pauseToggle}
         />
-        <Footer />
       </Router>
     );
   }

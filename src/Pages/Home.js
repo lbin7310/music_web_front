@@ -9,7 +9,6 @@ const Container = styled.div`
   padding-right: 3.5%;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto;
   @media (max-width : 320px) {
     padding: 20px 0 0 0;
   }
