@@ -4,6 +4,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import MusicPlayer from "./components/MusicPlayer";
+import Notice from "./components/Notice";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
@@ -19,8 +20,9 @@ class App extends Component {
     this.state={
       track: "",
       trackNum: 0,
+      trackAlbumId: 0,
       pauseToggle: false,
-      trackAlbumId: 0
+      noticeModal: false
     };
     this.player = React.createRef();
   }
@@ -58,13 +60,21 @@ class App extends Component {
     })
   }
 
+  handleModalToggle = () => {
+    const { state: { noticeModal } } = this;
+    this.setState({
+      noticeModal: !noticeModal
+    })
+  }
+
   render () {
     const { 
-      state: { track, trackNum, pauseToggle, trackAlbumId }, 
+      state: { track, trackNum, pauseToggle, trackAlbumId, noticeModal }, 
       player, 
       handlePlay,
       handlePause,
-      continuePlay
+      continuePlay,
+      handleModalToggle
     } = this;
     
     return (
@@ -87,6 +97,11 @@ class App extends Component {
           onHandlePause={handlePause}
           track={track}
           pauseToggle={pauseToggle}
+          onModalToggle={handleModalToggle}
+        />
+        <Notice 
+          noticeModal={noticeModal}
+          onModalToggle={handleModalToggle}
         />
       </Router>
     );
