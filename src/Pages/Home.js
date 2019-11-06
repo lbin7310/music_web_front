@@ -36,7 +36,7 @@ class Home extends Component {
       <Container>
         {
           albums.map( album => {
-            return <Album album={album} key={album.albumId}/>
+            return <Album album={album} key={album.id}/>
           })
         }
       </Container>

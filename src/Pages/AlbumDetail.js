@@ -25,7 +25,7 @@ class AlbumDetail extends Component {
 
   render() {
     const { state: { albumDetail },
-            props: { onHandlePlayer, onHandlePause, trackNum, pauseToggle, id: albumId, trackAlbumId } 
+            props: { onHandlePlayer, onHandlePause, trackNum, pauseToggle, id, trackAlbumId } 
           } = this;
     return (
       <Container>
@@ -34,7 +34,7 @@ class AlbumDetail extends Component {
           onHandlePlayer={onHandlePlayer}
           onHandlePause={onHandlePause}
           trackNum={trackNum}
-          albumId={albumId}
+          albumId={id}
           pauseToggle={pauseToggle}
           trackAlbumId={trackAlbumId}
         />

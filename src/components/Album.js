@@ -43,10 +43,10 @@ const Artist = styled.div`
 `;
 
 export default (props) => {
-  const { album: {albumId, title, artist, coverImgUrl} } = props;
+  const { album: {id, title, artist, coverImgUrl} } = props;
   return (
     <Container>
-      <AlbumDetailLink to={`/album/${albumId}`}>
+      <AlbumDetailLink to={`/album/${id}`}>
         <AlbumFigure>
           <AlbumImg src={coverImgUrl} alt={`앨범 ${title} 아티스트 ${artist}`}/>
           <AlbumFigcaption>
