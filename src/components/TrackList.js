@@ -45,8 +45,9 @@ export default (props) => {
      <Container>
         <Number>{id + 1}</Number>
         <Song>{song.title}</Song>
-        { trackNum === (id + 1) && !pauseToggle && albumId === trackAlbumId ? <PauseButton onClick={()=>{onHandlePause(song.musicFileUrl)}} /> :
-          <PlayButton onClick={()=>{onHandlePlayer(song.musicFileUrl, id + 1, albumId)}} />
+        { trackNum === (id + 1) && !pauseToggle && albumId === trackAlbumId 
+          ? <PauseButton onClick={()=>{onHandlePause(song.musicFileUrl)}} /> 
+          : <PlayButton onClick={()=>{onHandlePlayer(song.musicFileUrl, id + 1, albumId)}} />
         }
      </Container>
    )

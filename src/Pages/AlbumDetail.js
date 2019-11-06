@@ -7,8 +7,8 @@ const Container = styled.div`
 `;
 
 class AlbumDetail extends Component {
-  constructor (props){
-    super(props);
+  constructor (){
+    super();
     this.state = {
       albumDetail: {}
     }
