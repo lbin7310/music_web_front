@@ -5,6 +5,7 @@ import styled from "styled-components";
 const Container = styled.div`
   justify-self: center;
   margin-bottom: 20px;
+  box-shadow: 4px 5px 2px 0px rgba(0, 0, 0, 0.2);
 `;
 
 const AlbumDetailLink = styled(Link)`
@@ -17,7 +18,6 @@ const AlbumFigure = styled.figure`
   margin: 0;
   border: 1px solid #3B3B98;
   width: 150px;
-  border-radius: 2px;
 `;
 
 const AlbumImg = styled.img`
