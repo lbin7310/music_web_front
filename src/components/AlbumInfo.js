@@ -87,7 +87,7 @@ export default props => {
             : "" }
         </Tracks>
         <BackLink to="/">
-          <BackButton />  
+          <BackButton />
         </BackLink>
       </AlbumContents>
     </AlbumInfoContainer>

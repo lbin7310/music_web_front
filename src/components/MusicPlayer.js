@@ -28,11 +28,21 @@ const Audio = styled.audio``;
 const Source = styled.source``;
 
 const MusicPlayer = props => {
-  const { player, continuePlay, track, onHandlePause,  pauseToggle } = props;
+  const { 
+    player, 
+    continuePlay, 
+    track, 
+    onHandlePause,  
+    pauseToggle,
+    onModalToggle
+   } = props;
   return (
     <Container>
       { 
-        track && !pauseToggle ? <PauseButton onClick={() => onHandlePause(player.current)}></PauseButton>  
+        !track ?
+        <PlayButton onClick={() => onModalToggle()}></PlayButton> 
+        : track && !pauseToggle ? 
+        <PauseButton onClick={() => onHandlePause(player.current)}></PauseButton>  
         : <PlayButton onClick={() => continuePlay()}></PlayButton>
          
       }

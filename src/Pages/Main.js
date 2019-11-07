@@ -14,7 +14,7 @@ const Container = styled.div`
   }
 `;
 
-class Home extends Component {
+class Main extends Component {
   constructor () {
     super();
     this.state = {
@@ -43,4 +43,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default Main;
