@@ -36,7 +36,7 @@ export default props => {
     >
       <Notice>
         <NoticeText>
-          앨범에서 음악을 켜주세요.
+          앨범에서 음악을 재생하세요.
         </NoticeText>
       </Notice>
     </NoticeContainer>
