@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import Home from "./Pages/Home";
+import Main from "./Pages/Main";
 import AlbumDetail from "./Pages/AlbumDetail";
 
 export default props => {
@@ -13,7 +13,7 @@ export default props => {
   return (
     <Switch>
       <Route exact path="/">
-        <Home />
+        <Main />
       </Route>
       <Route path="/album/:id" 
         render={
