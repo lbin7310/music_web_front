@@ -1,6 +1,6 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 const Container = styled.div`
   justify-self: center;
@@ -16,7 +16,7 @@ const AlbumDetailLink = styled(Link)`
 const AlbumFigure = styled.figure`
   padding: 0;
   margin: 0;
-  border: 1px solid #3B3B98;
+  border: 1px solid #3b3b98;
   width: 150px;
 `;
 
@@ -42,23 +42,31 @@ const Artist = styled.div`
   color: #808e9b;
 `;
 
-export default (props) => {
-  const { album: {id, title, artist, coverImgUrl} } = props;
+export default props => {
+  const {
+    album: { id, title, artist, coverImgUrl },
+  } = props;
   return (
     <Container>
-      <AlbumDetailLink to={`/album/${id}`}>
+      <AlbumDetailLink
+        to={{
+          pathname: `/album/${title}`,
+          state: {
+            id,
+          },
+        }}
+      >
         <AlbumFigure>
-          <AlbumImg src={coverImgUrl} alt={`앨범 ${title} 아티스트 ${artist}`}/>
+          <AlbumImg
+            src={coverImgUrl}
+            alt={`앨범 ${title} 아티스트 ${artist}`}
+          />
           <AlbumFigcaption>
-            <AlbumTitle>
-              {title}
-            </AlbumTitle>
-            <Artist>
-              {artist}
-            </Artist>
+            <AlbumTitle>{title}</AlbumTitle>
+            <Artist>{artist}</Artist>
           </AlbumFigcaption>
         </AlbumFigure>
       </AlbumDetailLink>
     </Container>
-  )
-}
+  );
+};
