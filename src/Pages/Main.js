@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import { getAlbums } from "../api";
-import styled from "styled-components";
-import Album from "../components/Album";
+import React, { Component } from 'react';
+import styled from 'styled-components';
+import { getAlbums } from '../api';
+import Album from '../components/Album';
 
 const Container = styled.div`
   padding-top: 20px;
@@ -9,37 +9,35 @@ const Container = styled.div`
   padding-right: 3.5%;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  @media (max-width : 320px) {
+  @media (max-width: 320px) {
     padding: 20px 0 0 0;
   }
 `;
 
 class Main extends Component {
-  constructor () {
+  constructor() {
     super();
     this.state = {
-      albums: []
-    }
+      albums: [],
+    };
   }
 
   async componentDidMount() {
     const { data: albums } = await getAlbums();
     this.setState({
-      albums
-    })
+      albums,
+    });
   }
 
   render() {
-    const { state: { albums } } = this;
+    const {
+      state: { albums },
+    } = this;
     return (
       <Container>
-        {
-          albums.map( album => {
-            return <Album album={album} key={album.id}/>
-          })
-        }
+        {albums.map((album) => <Album album={album} key={album.id} />)}
       </Container>
-    )
+    );
   }
 }
 

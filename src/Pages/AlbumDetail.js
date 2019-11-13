@@ -1,35 +1,44 @@
-import React, { Component } from "react";
-import styled from "styled-components";
-import { getAlbumDetail } from "../api";
-import AlbumInfo from "../components/AlbumInfo";
+import React, { Component } from 'react';
+import styled from 'styled-components';
+import { getAlbumDetail } from '../api';
+import AlbumInfo from '../components/AlbumInfo';
 
-const Container = styled.div`
-`;
+const Container = styled.div``;
 
 class AlbumDetail extends Component {
-  constructor (){
+  constructor() {
     super();
     this.state = {
-      albumDetail: {}
-    }
+      albumDetail: {},
+    };
   }
-  
-  async componentDidMount () {
-    const { props: {id} } = this;
+
+  async componentDidMount() {
+    const {
+      props: { id },
+    } = this;
     const getData = await getAlbumDetail(id);
     const albumDetail = getData.data[0];
     this.setState({
-      albumDetail
-    })
+      albumDetail,
+    });
   }
 
   render() {
-    const { state: { albumDetail },
-            props: { onHandlePlayer, onHandlePause, trackNum, pauseToggle, id, trackAlbumId } 
-          } = this;
+    const {
+      state: { albumDetail },
+      props: {
+        onHandlePlayer,
+        onHandlePause,
+        trackNum,
+        pauseToggle,
+        id,
+        trackAlbumId,
+      },
+    } = this;
     return (
       <Container>
-        <AlbumInfo 
+        <AlbumInfo
           albumDetail={albumDetail}
           onHandlePlayer={onHandlePlayer}
           onHandlePause={onHandlePause}
@@ -39,7 +48,7 @@ class AlbumDetail extends Component {
           trackAlbumId={trackAlbumId}
         />
       </Container>
-    )
+    );
   }
 }
 
